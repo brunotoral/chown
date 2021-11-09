@@ -30,5 +30,7 @@ module Chown
       # Use UUIDs as primary key for all ActiveRecord models.
       g.orm :active_record, primary_key_type: :uuid
     end
+    # Set Portuguese as default locale.
+    config.i18n.default_locale = :'pt-BR'
   end
 end
