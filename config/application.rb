@@ -21,11 +21,18 @@ Bundler.require(*Rails.groups)
 module Chown
   class Application < Rails::Application
     config.load_defaults 6.1
-    config.time_zone = 'Central Time (US & Canada)'
 
+    # Autoload locales from subdirectories under config/locales.
+    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{yml,rb}')]
+
+    # Customize the generators
     config.generators do |g|
-      # Don't generate system test files.
       g.system_tests = nil
+      g.stylesheets false
+      g.helper false
+      g.assets false
+      g.javascript_driver false
+      g.test_framework false
 
       # Use UUIDs as primary key for all ActiveRecord models.
       g.orm :active_record, primary_key_type: :uuid
