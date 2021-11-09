@@ -1,0 +1,5 @@
+<div class="flashes">
+  <% @flashes.each do |key, value| -%>
+    <%= render Flashes::FlashComponent.new(kind: key, message: value) %>
+  <% end -%>
+</div>

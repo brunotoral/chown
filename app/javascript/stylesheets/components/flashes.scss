@@ -1,0 +1,18 @@
+.flashes {
+  top: 15px;
+  right: 3rem;
+  width: 280px;
+  position: absolute;
+
+  .notification {
+    &.is-alert {
+      background-color: $warning;
+    }
+    &.is-error {
+      background-color: $danger;
+    }
+    &.is-notice {
+      background-color: $info;
+    }
+  }
+}

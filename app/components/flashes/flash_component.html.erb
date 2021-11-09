@@ -1,0 +1,4 @@
+<%= tag.div class: classes, data: { controller: 'flashes', 'flashes-target' => 'flash' } do %>
+  <button class="delete" data-action="flashes#dismiss"></button>
+  <%= @message %>
+<% end %>
