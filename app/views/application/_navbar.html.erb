@@ -1,0 +1,33 @@
+<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+  <div class="container">
+    <div class="navbar-brand">
+      <%= link_to root_path, class: 'navbar-item' do %>
+        <%= image_tag 'logo.png', width: 112, height: 28 %>
+      <% end %>
+
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div class="navbar-end">
+      <div class="navbar-item has-dropdown is-hoverable">
+        <div class="navbar-link is-arrowless">
+          <figure class="image is-24x24">
+            <%= image_tag 'avatars/49.jpg', class: 'is-rounded' %>
+          </figure>
+        </div>
+
+        <div class="navbar-dropdown is-right">
+          <a class="navbar-item">
+            Minha Conta
+          </a>
+          <hr class="navbar-divider">
+          <%= link_to 'Sair', '#', method: :delete, class: 'navbar-item' %>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

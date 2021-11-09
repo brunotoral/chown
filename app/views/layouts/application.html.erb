@@ -11,9 +11,11 @@
   </head>
 
   <body>
-    <div class="container">
-      <%= render Flashes::Component.new flashes: user_facing_flashes %>
+    <%= render 'navbar' %>
 
+    <div class="container">
+      <%= render 'navigation' %>
+      <%= render Flashes::Component.new flashes: user_facing_flashes %>
       <%= yield %>
     </div>
   </body>
