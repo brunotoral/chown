@@ -13,6 +13,7 @@ gem 'webpacker', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'redis', '~> 4.0'
 gem 'bcrypt', '~> 3.1.7'
+gem 'devise'
 
 gem 'image_processing', '~> 1.2'
 
@@ -31,6 +32,16 @@ group :development do
   gem 'rack-mini-profiler', '~> 2.0'
   gem 'listen', '~> 3.3'
   gem 'spring'
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'guard-rubocop'
+  gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'cuprite'
+  gem 'site_prism', '~> 3.7.1'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
