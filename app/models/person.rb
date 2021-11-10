@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Person < ApplicationRecord
   enum kind: { buyer: 0, seller: 1 }
 

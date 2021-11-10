@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html class="has-background-light">
+  <head>
+    <title>Chown</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div class="container">
+      <%= render Flashes::Component.new flashes: user_facing_flashes %>
+      <%= yield %>
+    </div>
+  </body>
+</html>
