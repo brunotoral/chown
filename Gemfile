@@ -14,6 +14,8 @@ gem 'turbolinks', '~> 5'
 gem 'redis', '~> 4.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'devise'
+gem 'dry-rails', '~> 0.3.0'
+gem 'dry-transformer'
 gem 'title'
 gem 'view_component', require: 'view_component/engine'
 

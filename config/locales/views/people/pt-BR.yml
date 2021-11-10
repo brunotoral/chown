@@ -1,0 +1,13 @@
+pt-BR:
+  people:
+    index:
+      heading: Pessoas Registradas
+      actions:
+        update: Atualizar
+        delete: Remover
+    show:
+      heading: Pessoa
+    new:
+      heading: Registrar
+    edit:
+      heading: Editando

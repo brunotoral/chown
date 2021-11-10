@@ -1,0 +1,17 @@
+<section class="section">
+  <%= section_title t('.heading') %>
+
+  <div class="box">
+    <%= form_with model: @person, local: true, class: 'new-person columns' do |f| %>
+      <div class="column is-6 is-offset-3">
+        <%= render_errors @person %>
+
+        <%= render 'form', f: f %>
+
+        <div class="control">
+          <%= f.submit 'Salvar Pessoa', class: 'button is-success' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>

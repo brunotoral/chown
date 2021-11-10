@@ -21,7 +21,7 @@
           <tr>
             <td><%= link_to person.name, person_path(person) %></td>
             <td><%= person.document_number %></td>
-            <td><%= person.kind %></td>
+            <td><%= t(person.kind, scope: 'person_kinds') %></td>
             <td><%= link_to t('.actions.update'), edit_person_path(person) %></td>
             <td><%= link_to t('.actions.delete'), person_path(person), method: :delete %></td>
           </tr>

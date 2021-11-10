@@ -1,0 +1,23 @@
+pt-BR:
+  person_kinds:
+    buyer: Comprador
+    seller: Vendedor
+
+  person_attributes: &attributes
+    name: Nome
+    kind: Tipo de pessoa
+    document_number: Número do documento (CPF/CNPJ)
+
+  helpers:
+    label:
+      person:
+        <<: *attributes
+
+  activerecord:
+    models:
+      person:
+        one: Pessoa
+        other: Pessoas
+    attributes:
+      person:
+        <<: *attributes
