@@ -1,0 +1,32 @@
+<section class="section">
+  <%= section_title t '.heading' %>
+
+  <div class="box">
+    <div class="buttons are-small">
+      <%= link_to 'Novo', new_person_path, class: 'button is-success is-small' %>
+    </div>
+
+    <table id="people" class="table is-fullwidth is-hoverable">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Documento</th>
+          <th>Tipo</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @people.each do |person| %>
+          <tr>
+            <td><%= link_to person.name, person_path(person) %></td>
+            <td><%= person.document_number %></td>
+            <td><%= person.kind %></td>
+            <td><%= link_to t('.actions.update'), edit_person_path(person) %></td>
+            <td><%= link_to t('.actions.delete'), person_path(person), method: :delete %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>
