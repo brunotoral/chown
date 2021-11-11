@@ -9,5 +9,5 @@ Rails.application.routes.draw do
     resources :vehicles, except: :index
   end
 
-  resources :transfers
+  resources :transfers, only: %i[index new create]
 end
