@@ -12,7 +12,7 @@ class PeopleController < ApplicationController
   end
 
   def index
-    @people = Person.all
+    @people = paginate(Person.all)
   end
 
   def show; end

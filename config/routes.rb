@@ -3,8 +3,11 @@ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
+  get '/vehicles', to: 'vehicles#index'
+
   resources :people do
     resources :vehicles, except: :index
   end
-  get '/vehicles', to: 'vehicles#index'
+
+  resources :transfers
 end

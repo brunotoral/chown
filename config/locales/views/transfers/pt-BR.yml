@@ -1,0 +1,16 @@
+pt-BR:
+  transfers:
+    index:
+      heading: Transferências Realizadas
+      actions:
+        update: Atualizar
+        delete: Remover
+    show:
+      heading: Transferência
+      actions:
+        update: Atualizar
+        delete: Remover
+    new:
+      heading: Transferir
+    edit:
+      heading: Editando

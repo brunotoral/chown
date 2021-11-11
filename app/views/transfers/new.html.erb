@@ -1,0 +1,17 @@
+<section class="section">
+  <%= section_title t('.heading') %>
+
+  <div class="box">
+    <%= form_with model: @transfer.transfer, local: true, class: 'new-transfer columns' do |f| %>
+      <div class="column is-6 is-offset-3">
+        <%= render_errors @transfer.transfer %>
+
+        <%= render 'form', f: f %>
+
+        <div class="control">
+          <%= f.submit 'Transferir', class: 'button is-success' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>

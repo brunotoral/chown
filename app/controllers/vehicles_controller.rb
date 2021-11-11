@@ -14,7 +14,7 @@ class VehiclesController < ApplicationController
   end
 
   def index
-    @vehicles = Vehicle.all
+    @vehicles = paginate Vehicle.all
   end
 
   def show; end

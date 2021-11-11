@@ -1,0 +1,32 @@
+<div class="field">
+  <%= f.label :vehicle, class: 'label' %>
+  <div class="control">
+    <%= f.select :vehicle_id, Vehicle.transferable.collect { |p| [ p.license_plate, p.id ] }, include_blank: true, class: 'input', required: true %>
+  </div>
+</div>
+
+<div class="field">
+  <%= f.label :person, class: 'label' %>
+  <div class="control">
+    <%= f.select :person_id, Person.buyer.collect { |p| [ p.name, p.id ] }, include_blank: true, class: 'input', required: true %>
+  </div>
+</div>
+
+<div class="field">
+  <div class="file has-name" data-controller="files">
+    <%= f.label :doc_image, class: 'file-label' do %>
+      <%= f.file_field :doc_image, accept: 'image/png,image/gif,image/jpeg', class: 'file-input', 'data-action' => "change->files#display" %>
+      <span class="file-cta">
+        <span class="file-icon">
+          <ion-icon name="cloud-upload-outline"></ion-icon>
+        </span>
+        <span class="file-label">
+         Escolha um arquivo...
+        </span>
+      </span>
+      <span class="file-name" data-files-target="fileItem">
+        Escolha a imagem do documento
+      </span>
+    <% end %>
+  </div>
+</div>

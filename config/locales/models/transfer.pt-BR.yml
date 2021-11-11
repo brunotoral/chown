@@ -1,0 +1,20 @@
+pt-BR:
+  transfer_attributes: &attributes
+    doc_image: Imagem do Documento
+    person: Pessoa (Comprador)
+    vehicle: Veículo
+    created_at: Transferido em
+
+  helpers:
+    label:
+      transfer:
+        <<: *attributes
+
+  activerecord:
+    models:
+      transfer:
+        one: Transferência
+        other: Transferências
+    attributes:
+      transfer:
+        <<: *attributes

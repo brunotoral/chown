@@ -5,6 +5,7 @@ require 'pagy/extras/i18n'
 require 'pagy/extras/array'
 require 'pagy/extras/overflow'
 require 'pagy/extras/countless'
+require 'pagy/extras/bulma'
 
 # Set the page param to be page
 Pagy::VARS[:page_param] = :page
@@ -20,4 +21,3 @@ Pagy::VARS[:enable_trim_extra] = false
 
 # Default i18n key
 Pagy::VARS[:i18n_key] = 'pagy.item_name'
-

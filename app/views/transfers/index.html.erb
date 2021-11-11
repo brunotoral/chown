@@ -1,0 +1,35 @@
+<section class="section">
+  <%= section_title t '.heading' %>
+
+  <div class="box">
+    <div class="buttons are-small">
+      <%= link_to 'Nova Transferência', new_transfer_path, class: 'button is-success is-small' %>
+    </div>
+
+    <table id="transfers" class="table is-fullwidth is-hoverable">
+      <thead>
+        <tr>
+          <th>Comprador</th>
+          <th>Documento do Proprietário</th>
+          <th>Placa do Veículo</th>
+          <th>Usuário</th>
+          <th>Data de Transferência</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @transfers.each do |transfer| %>
+          <tr>
+            <td><%= link_to transfer.name, person_path(transfer.person) %></td>
+            <td><%= transfer.document_number %></td>
+            <td><%= transfer.license_plate %></td>
+            <td><%= transfer.email %></td>
+            <td><%= transfer.created_at %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <%== pagy_bulma_nav(@pagy) %>
+  </div>
+</section>
