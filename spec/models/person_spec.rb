@@ -5,6 +5,7 @@ require 'rails_helper'
 RSpec.describe Person, type: :model do
   describe 'associations' do
     it { is_expected.to have_many :vehicles }
+    it { is_expected.to have_many :transfers }
   end
 
   describe 'validations' do

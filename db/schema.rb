@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_10_164852) do
+ActiveRecord::Schema.define(version: 2021_11_11_141258) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -22,6 +22,17 @@ ActiveRecord::Schema.define(version: 2021_11_10_164852) do
     t.integer "kind", default: 0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "transfers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "vehicle_id", null: false
+    t.uuid "person_id", null: false
+    t.uuid "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["person_id"], name: "index_transfers_on_person_id"
+    t.index ["user_id"], name: "index_transfers_on_user_id"
+    t.index ["vehicle_id"], name: "index_transfers_on_vehicle_id"
   end
 
   create_table "users", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
@@ -47,5 +58,8 @@ ActiveRecord::Schema.define(version: 2021_11_10_164852) do
     t.index ["person_id"], name: "index_vehicles_on_person_id"
   end
 
+  add_foreign_key "transfers", "people"
+  add_foreign_key "transfers", "users"
+  add_foreign_key "transfers", "vehicles"
   add_foreign_key "vehicles", "people"
 end

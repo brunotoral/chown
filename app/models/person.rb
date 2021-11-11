@@ -4,6 +4,7 @@ class Person < ApplicationRecord
   enum kind: { buyer: 0, seller: 1 }
 
   has_many :vehicles, dependent: :destroy
+  has_many :transfers
 
   validates :name, :document_number, :kind, presence: true
 end
