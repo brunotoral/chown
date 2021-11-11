@@ -4,7 +4,16 @@ pt-BR:
       success: Sucesso! %{name} foi registrado.
       alert: Encontramos erros ao tentar registrar a pessoa.
     update:
-      success: Sucesso! Pessoa foi atualizada.
+      success: Sucesso! Pessoa atualizada.
       alert: Encontramos erros ao tentar atualizar a pessoa.
     destroy:
       success: Sucesso! Pessoa deletada.
+  vehicles:
+    create:
+      success: Sucesso! O veículo foi registrado.
+      alert: Encontramos erros ao tentar registrar o veículo.
+    update:
+      success: Sucesso! Veículo atualizado.
+      alert: Encontramos erros ao tentar atualizar o veículo.
+    destroy:
+      success: Sucesso! Veículo deletada.

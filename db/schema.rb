@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_09_193151) do
+ActiveRecord::Schema.define(version: 2021_11_10_164852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -36,4 +36,16 @@ ActiveRecord::Schema.define(version: 2021_11_09_193151) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vehicles", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.uuid "person_id", null: false
+    t.string "license_plate", null: false
+    t.string "renavam", null: false
+    t.string "crv_number", null: false
+    t.date "crv_date", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["person_id"], name: "index_vehicles_on_person_id"
+  end
+
+  add_foreign_key "vehicles", "people"
 end

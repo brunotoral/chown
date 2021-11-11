@@ -1,0 +1,21 @@
+pt-BR:
+  vehicle_attributes: &attributes
+    license_plate: Número da Placa
+    renavam: Renavam
+    document_number: Número do documento (CPF/CNPJ)
+    crv_number: Número do CRV
+    crv_date: Data do CRV
+
+  helpers:
+    label:
+      vehicle:
+        <<: *attributes
+
+  activerecord:
+    models:
+      vehicle:
+        one: Veículo
+        other: Veículos
+    attributes:
+      vehicle:
+        <<: *attributes

@@ -1,0 +1,17 @@
+<section class="section">
+  <%= section_title t('.heading') %>
+
+  <div class="box">
+    <%= form_with model: @vehicle, url: person_vehicle_path, local: true, class: 'new-vehicle columns' do |f| %>
+      <div class="column is-6 is-offset-3">
+        <%= render_errors @vehicle %>
+
+        <%= render 'form', f: f %>
+
+        <div class="control">
+          <%= f.submit 'Salvar Veículo', class: 'button is-success' %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</section>

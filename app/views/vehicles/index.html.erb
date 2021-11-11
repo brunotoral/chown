@@ -1,0 +1,28 @@
+<section class="section">
+  <%= section_title t '.heading' %>
+
+  <div class="box">
+    <table id="vehicles" class="table is-fullwidth is-hoverable">
+      <thead>
+        <tr>
+          <th>Proprietário</th>
+          <th>Documento do Proprietário</th>
+          <th>Placa do Veículo</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @vehicles.each do |vehicle| %>
+          <tr>
+            <td><%= link_to vehicle.person.name, person_path(vehicle.person) %></td>
+            <td><%= vehicle.document_number %></td>
+            <td><%= vehicle.license_plate %></td>
+            <td><%= link_to t('.actions.update'), edit_person_vehicle_path(vehicle.person, vehicle) %></td>
+            <td><%= link_to t('.actions.delete'), person_vehicle_path(vehicle.person, vehicle), method: :delete %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</section>

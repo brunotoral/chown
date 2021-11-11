@@ -1,0 +1,13 @@
+pt-BR:
+  vehicles:
+    index:
+      heading: Veículos Registrados
+      actions:
+        update: Atualizar
+        delete: Remover
+    show:
+      heading: Veículo
+    new:
+      heading: Registrar
+    edit:
+      heading: Editar

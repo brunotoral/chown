@@ -27,7 +27,7 @@ class PeopleController < ApplicationController
     if @person.save
       flash[:success] = t('.success', name: @person.name)
 
-      redirect_to people_path
+      redirect_to @person
     else
       flash.now[:alert] = t('.alert')
 

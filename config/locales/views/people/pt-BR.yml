@@ -7,6 +7,9 @@ pt-BR:
         delete: Remover
     show:
       heading: Pessoa
+      actions:
+        update: Atualizar
+        delete: Remover
     new:
       heading: Registrar
     edit:

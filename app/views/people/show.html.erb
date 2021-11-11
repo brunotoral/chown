@@ -3,7 +3,7 @@
 
   <div class="box">
     <div class="buttons are-small">
-      <%= link_to 'Novo', new_person_path, class: 'button is-success is-small' %>
+      <%= link_to 'Novo Veículo', new_person_vehicle_path(@person), class: 'button is-success is-small' %>
     </div>
 
     <table id="person" class="table is-fullwidth is-hoverable">
@@ -24,6 +24,35 @@
           <td><%= link_to t('.actions.update'), edit_person_path(@person) %></td>
           <td><%= link_to t('.actions.delete'), person_path(@person), method: :delete %></td>
         </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <%= section_title 'veículos' %>
+
+  <div class="box">
+    <table id="vehicles" class="table is-fullwidth is-hoverable">
+      <thead>
+        <tr>
+          <th>Placa</th>
+          <th>Renavam</th>
+          <th>CRV</th>
+          <th>Data do CRV</th>
+          <th></th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @person.vehicles&.each do |vehicle| %>
+          <tr>
+            <td><%= vehicle.license_plate %></td>
+            <td><%= vehicle.renavam %></td>
+            <td><%= vehicle.crv_number %></td>
+            <td><%= vehicle.crv_date %></td>
+            <td><%= link_to t('.actions.update'), edit_person_vehicle_path(@person, vehicle) %></td>
+            <td><%= link_to t('.actions.delete'), person_vehicle_path(@person, vehicle), method: :delete %></td>
+          </tr>
+        <% end %>
       </tbody>
     </table>
   </div>
