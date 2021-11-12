@@ -1,0 +1,23 @@
+pt-BR:
+  address_attributes: &attributes
+    state: Estado
+    city: Cidade
+    district: Bairro
+    street: Rua
+    number: Número
+    complement: Complemento
+    zip_code: CEP
+
+  helpers:
+    label:
+      address:
+        <<: *attributes
+
+  activerecord:
+    models:
+      address:
+        one: Endereço
+        other: Endereços
+    attributes:
+      address:
+        <<: *attributes

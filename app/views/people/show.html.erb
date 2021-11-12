@@ -24,11 +24,36 @@
         </tr>
       </tbody>
     </table>
-  </div>
 
-  <%= section_title 'veículos' %>
+    <%= section_title 'endereço' %>
 
-  <div class="box">
+    <table id="address" class="table is-fullwidth is-hoverable">
+      <thead>
+        <tr>
+          <th>Estado</th>
+          <th>Cidade</th>
+          <th>Bairro</th>
+          <th>Rua</th>
+          <th>Número</th>
+          <th>CEP</th>
+          <th>Complemento</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><%= @person.state %></td>
+          <td><%= @person.city %></td>
+          <td><%= @person.district %></td>
+          <td><%= @person.street %></td>
+          <td><%= @person.number %></td>
+          <td><%= @person.zip_code %></td>
+          <td><%= @person.complement %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <%= section_title 'veículos' %>
+
     <table id="vehicles" class="table is-fullwidth is-hoverable">
       <thead>
         <tr>

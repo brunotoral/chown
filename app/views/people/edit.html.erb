@@ -7,6 +7,7 @@
         <%= render_errors @person %>
 
         <%= render 'form', f: f %>
+        <%= render 'shared/form/address', f: f %>
 
         <div class="control">
           <%= f.submit 'Salvar', class: 'button is-success' %>

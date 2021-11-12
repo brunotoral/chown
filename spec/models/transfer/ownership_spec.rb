@@ -12,7 +12,11 @@ RSpec.describe Transfer::Ownership, type: :model do
       let(:attrs) {
         {
           transfer: Fabricate.attributes_for(:transfer),
-          buyer: Fabricate.attributes_for(:person, name: 'Zito')
+          buyer: Fabricate.attributes_for(
+            :person,
+            name: 'Zito',
+            address_attributes: Fabricate.attributes_for(:address)
+          ).except(:address_id)
         }
       }
 
@@ -46,7 +50,11 @@ RSpec.describe Transfer::Ownership, type: :model do
         user = Fabricate(:user, email: 'ownership@exaple.com')
         invalid_attrs = {
           transfer: Fabricate.attributes_for(:transfer, user: user),
-          buyer: Fabricate.attributes_for(:person, name: '')
+          buyer: Fabricate.attributes_for(
+            :person,
+            name: '',
+            address_attributes: Fabricate.attributes_for(:address)
+          ).except(:address_id)
         }
         ownership = described_class.new invalid_attrs
 
@@ -60,7 +68,10 @@ RSpec.describe Transfer::Ownership, type: :model do
       it 'returns true' do
         attrs = {
           transfer: Fabricate.attributes_for(:transfer),
-          buyer: Fabricate.attributes_for(:person)
+          buyer: Fabricate.attributes_for(
+            :person,
+            address_attributes: Fabricate.attributes_for(:address)
+          ).except(:address_id)
         }
         ownership = described_class.new attrs
 
@@ -72,7 +83,10 @@ RSpec.describe Transfer::Ownership, type: :model do
       it 'returns false' do
         attrs = {
           transfer: Fabricate.attributes_for(:transfer),
-          buyer: Fabricate.attributes_for(:person, name: '')
+          buyer: Fabricate.attributes_for(
+            :person, name: '',
+            address_attributes: Fabricate.attributes_for(:address)
+          ).except(:address_id)
         }
         ownership = described_class.new attrs
 
@@ -84,7 +98,10 @@ RSpec.describe Transfer::Ownership, type: :model do
       it 'returns false' do
         attrs = {
           transfer: Fabricate.attributes_for(:transfer, vehicle: nil),
-          buyer: Fabricate.attributes_for(:person)
+          buyer: Fabricate.attributes_for(
+            :person,
+            address_attributes: Fabricate.attributes_for(:address)
+          ).except(:address_id)
         }
         ownership = described_class.new attrs
 
@@ -98,7 +115,10 @@ RSpec.describe Transfer::Ownership, type: :model do
       it 'returns true' do
         attrs = {
           transfer: Fabricate.attributes_for(:transfer, vehicle: nil),
-          buyer: Fabricate.attributes_for(:person)
+          buyer: Fabricate.attributes_for(
+            :person,
+            address_attributes: Fabricate.attributes_for(:address)
+          ).except(:address_id)
         }
         ownership = described_class.new attrs
 
@@ -110,7 +130,10 @@ RSpec.describe Transfer::Ownership, type: :model do
       it 'returns false' do
         attrs = {
           transfer: Fabricate.attributes_for(:transfer),
-          buyer: Fabricate.attributes_for(:person)
+          buyer: Fabricate.attributes_for(
+            :person,
+            address_attributes: Fabricate.attributes_for(:address)
+          ).except(:address_id)
         }
         ownership = described_class.new attrs
 

@@ -4,9 +4,8 @@ class PeopleController < ApplicationController
   before_action :set_person, only: %i[show edit update destroy]
 
   schema :create, :update do
-    required(:person).hash do
-      required(:name).filled(:string)
-      required(:document_number).filled(:string)
+    required(:person).hash(PersonSchema) do
+      required(:address_attributes).hash(AddressSchema)
     end
   end
 
@@ -18,12 +17,13 @@ class PeopleController < ApplicationController
 
   def new
     @person = Person.new
+    @address = @person.build_address
   end
 
   def create
     @person = Person.new person_params
 
-    if @person.save
+    if safe_params.success? && @person.save
       flash[:success] = t('.success', name: @person.name)
 
       redirect_to @person
@@ -37,10 +37,10 @@ class PeopleController < ApplicationController
   def edit; end
 
   def update
-    if @person.update person_params
+    if safe_params.success? && @person.update(person_params)
       flash[:success] = t('.success')
 
-      redirect_to people_path
+      redirect_to @person
     else
       flash.now[:alert] = t('.alert')
 

@@ -5,11 +5,11 @@ Rails.application.routes.draw do
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  get '/vehicles', to: 'vehicles#index'
+  resources :addresses, except: :index
+  resources :vehicles, only: :index
+  resources :transfers, only: %i[index new create show]
 
   resources :people do
     resources :vehicles, except: :index
   end
-
-  resources :transfers, only: %i[index new create show]
 end

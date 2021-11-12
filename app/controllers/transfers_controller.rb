@@ -3,12 +3,11 @@
 class TransfersController < ApplicationController
   schema :create do
     required(:transfer).hash do
-      required(:doc_image).filled(:string)
+      required(:doc_image)
       required(:vehicle_id).filled(:string)
 
-      required(:person).hash do
-        required(:name).filled(:string)
-        required(:document_number).filled(:string)
+      required(:person).hash(PersonSchema) do
+        required(:address_attributes).hash(AddressSchema)
       end
     end
   end
@@ -28,7 +27,7 @@ class TransfersController < ApplicationController
   def create
     @ownership = Transfer::Ownership.new ownership_params
 
-    if @ownership.save
+    if safe_params.success? && @ownership.save
       flash[:sucess] = t(
         '.success',
         vehicle: @ownership.transfer.license_plate,

@@ -1,0 +1,50 @@
+<%= f.fields_for :address, @address do |fa| %>
+  <div class="field">
+    <%= fa.label :state, class: 'label' %>
+    <div class="control">
+      <%= fa.text_field :state, class: 'input', required: true %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= fa.label :city, class: 'label' %>
+    <div class="control">
+      <%= fa.text_field :city, class: 'input', required: true %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= fa.label :district, class: 'label' %>
+    <div class="control">
+      <%= fa.text_field :district, class: 'input', required: true %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= fa.label :street, class: 'label' %>
+    <div class="control">
+      <%= fa.text_field :street, class: 'input', required: true %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= fa.label :number, class: 'label' %>
+    <div class="control">
+      <%= fa.text_field :number, class: 'input' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= fa.label :zip_code, class: 'label' %>
+    <div class="control">
+      <%= fa.text_field :zip_code, class: 'input', required: true %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= fa.label :complement, class: 'label' %>
+    <div class="control">
+      <%= fa.text_field :complement, class: 'input' %>
+    </div>
+  </div>
+<% end %>
