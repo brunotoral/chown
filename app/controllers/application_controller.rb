@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
     paginated_collection
   end
 
-  def after_sign_in_path_for(resource)
+  def after_sign_in_path_for(_resource)
     people_path
   end
 end

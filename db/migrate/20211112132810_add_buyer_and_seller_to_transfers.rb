@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddBuyerAndSellerToTransfers < ActiveRecord::Migration[6.1]
   def change
     add_reference :transfers, :buyer, foreign_key: { to_table: 'people' }, type: :uuid

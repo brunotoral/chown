@@ -25,6 +25,8 @@ module Chown
     # Autoload locales from subdirectories under config/locales.
     config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{yml,rb}')]
 
+    # config.autoload_paths << 'app/models'
+
     # Customize the generators
     config.generators do |g|
       g.system_tests = nil
@@ -43,10 +45,10 @@ module Chown
 
     # Configure devise layout
     config.to_prepare do
-      Devise::SessionsController.layout "home"
-      Devise::ConfirmationsController.layout "home"
-      Devise::UnlocksController.layout "home"
-      Devise::PasswordsController.layout "home"
+      Devise::SessionsController.layout 'home'
+      Devise::ConfirmationsController.layout 'home'
+      Devise::UnlocksController.layout 'home'
+      Devise::PasswordsController.layout 'home'
     end
   end
 end

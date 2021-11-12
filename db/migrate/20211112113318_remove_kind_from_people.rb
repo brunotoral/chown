@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class RemoveKindFromPeople < ActiveRecord::Migration[6.1]
   def change
     remove_column :people, :kind, :integer

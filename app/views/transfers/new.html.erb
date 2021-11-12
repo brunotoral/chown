@@ -5,8 +5,9 @@
     <%= form_with model: @ownership.transfer, local: true, class: 'new-transfer columns' do |f| %>
       <div class="column is-6 is-offset-3">
         <%= render_errors @ownership.transfer %>
+        <%= render_errors @ownership.buyer %>
 
-        <%= render 'form', f: f %>
+        <%= render 'form', f: f, buyer: @ownership.buyer %>
 
         <div class="control">
           <%= f.submit 'Transferir', class: 'button is-success' %>

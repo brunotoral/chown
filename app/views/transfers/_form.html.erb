@@ -6,20 +6,6 @@
 </div>
 
 <div class="field">
-  <%= f.label :buyer, class: 'label' %>
-  <div class="control">
-    <%= f.select :buyer_id, Person.all.collect { |p| [ p.name, p.id ] }, include_blank: true, class: 'input', required: true %>
-  </div>
-</div>
-
-<div class="field">
-  <%= f.label :seller, class: 'label' %>
-  <div class="control">
-    <%= f.select :seller_id, Person.all.collect { |p| [ p.name, p.id ] }, include_blank: true, class: 'input', required: true %>
-  </div>
-</div>
-
-<div class="field">
   <div class="file has-name" data-controller="files">
     <%= f.label :doc_image, class: 'file-label' do %>
       <%= f.file_field :doc_image, accept: 'image/png,image/gif,image/jpeg', class: 'file-input', 'data-action' => "change->files#display" %>
@@ -37,3 +23,19 @@
     <% end %>
   </div>
 </div>
+
+<%= f.fields_for buyer do |ff| %>
+  <div class="field">
+    <%= ff.label :name, class: 'label' %>
+    <div class="control">
+      <%= ff.text_field :name, class: 'input', required: true %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= ff.label :document_number, class: 'label' %>
+    <div class="control">
+      <%= ff.text_field :document_number, class: 'input', required: true %>
+    </div>
+  </div>
+<% end %>

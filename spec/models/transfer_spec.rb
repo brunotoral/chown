@@ -11,10 +11,9 @@ RSpec.describe Transfer, type: :model do
   end
 
   describe 'validations' do
-    subject(:buyer) { Fabricate(:person, name: 'Buyer', kind: :buyer) }
     subject(:transfer) { Fabricate.build(:transfer) }
 
-    it { is_expected.to validate_uniqueness_of(:vehicle) } #.case_insensitive
+    it { is_expected.to validate_uniqueness_of(:vehicle) }
     it { is_expected.to validate_presence_of :doc_image }
   end
 end

@@ -1,12 +1,15 @@
 # frozen_string_literal: true
 
 class TransfersController < ApplicationController
-  schema :create, :update do
+  schema :create do
     required(:transfer).hash do
       required(:doc_image).filled(:string)
       required(:vehicle_id).filled(:string)
-      required(:buyer_id).filled(:string)
-      required(:seller_id).filled(:string)
+
+      required(:person).hash do
+        required(:name).filled(:string)
+        required(:document_number).filled(:string)
+      end
     end
   end
 
@@ -23,7 +26,7 @@ class TransfersController < ApplicationController
   end
 
   def create
-    @ownership = Transfer::Ownership.new transfer_params
+    @ownership = Transfer::Ownership.new ownership_params
 
     if @ownership.save
       flash[:sucess] = t(
@@ -42,7 +45,15 @@ class TransfersController < ApplicationController
 
   private
 
+  def ownership_params
+    { transfer: transfer_params, buyer: buyer_params }
+  end
+
   def transfer_params
-    safe_params[:transfer].merge(user: current_user)
+    safe_params[:transfer].except(:person).merge(user: current_user)
+  end
+
+  def buyer_params
+    safe_params[:transfer][:person]
   end
 end

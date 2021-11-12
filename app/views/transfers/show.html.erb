@@ -20,8 +20,8 @@
       </thead>
       <tbody>
         <tr>
-          <td> <%= image_tag(@transfer.doc_image) %></td>
-          <td><%= link_to @transfer.name, person_path(@transfer.person) %></td>
+          <td><%= image_tag @transfer.doc_image, width: 128, height: 128 %></td>
+          <td><%= link_to @transfer.name, person_path(@transfer.buyer) %></td>
           <td><%= @transfer.document_number %></td>
           <td><%= @transfer.license_plate %></td>
           <td><%= @transfer.email %></td>

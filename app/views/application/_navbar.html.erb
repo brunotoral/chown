@@ -21,6 +21,10 @@
         </div>
 
         <div class="navbar-dropdown is-right">
+          <a class="navbar-item">
+            <%= current_user.email %>
+          </a>
+          <hr class="navbar-divider">
           <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: 'navbar-item' %>
         </div>
       </div>

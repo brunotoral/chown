@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Vehicle < ApplicationRecord
   belongs_to :person
 
@@ -7,5 +9,5 @@ class Vehicle < ApplicationRecord
 
   validates :license_plate, :renavam, :crv_number, :crv_date, presence: true
 
-  scope :transferable, -> { where.missing(:transfer)}
+  scope :transferable, -> { where.missing(:transfer) }
 end
