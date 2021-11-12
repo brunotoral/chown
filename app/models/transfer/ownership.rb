@@ -1,24 +1,21 @@
 # frozen_string_literal: true
 
 class Transfer
-  class Owner
-    attr_reader :transfer, :person, :vehicle
+  class Ownership
+    attr_reader :transfer, :vehicle
 
     def initialize(attrs = {})
       @transfer ||= Transfer.new(attrs)
       @person = attrs[:person_id]
-      if attrs[:vehicle_id].present?
-        @vehicle ||= Vehicle.find(attrs[:vehicle_id])
-        @vehicle.assign_attributes(person_id: @person)
-      end
+      @vehicle ||= Vehicle.find(attrs[:vehicle_id]) if attrs[:vehicle_id].present?
+      @vehicle&.assign_attributes(person_id: @person)
     end
 
     def save
-      byebug
       return false if invalid?
 
       transaction do
-        transfer.save!(validate:false)
+        transfer.save!(validate: false)
         vehicle.save!(validate: false)
       end
 

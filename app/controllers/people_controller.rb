@@ -7,7 +7,6 @@ class PeopleController < ApplicationController
     required(:person).hash do
       required(:name).filled(:string)
       required(:document_number).filled(:string)
-      required(:kind).filled(:integer)
     end
   end
 

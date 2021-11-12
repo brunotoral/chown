@@ -16,16 +16,12 @@
       <div class="navbar-item has-dropdown is-hoverable">
         <div class="navbar-link is-arrowless">
           <figure class="image is-24x24">
-            <%= image_tag 'avatars/49.jpg', class: 'is-rounded' %>
+            <%= image_tag 'avatars/49.png', class: 'is-rounded' %>
           </figure>
         </div>
 
         <div class="navbar-dropdown is-right">
-          <a class="navbar-item">
-            Minha Conta
-          </a>
-          <hr class="navbar-divider">
-          <%= link_to 'Sair', '#', method: :delete, class: 'navbar-item' %>
+          <%= link_to 'Sair', destroy_user_session_path, method: :delete, class: 'navbar-item' %>
         </div>
       </div>
     </div>

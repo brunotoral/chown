@@ -14,7 +14,7 @@ require 'action_mailbox/engine'
 require 'action_text/engine'
 require 'action_view/railtie'
 require 'action_cable/engine'
-# require 'sprockets/railtie'
+require 'sprockets/railtie'
 
 Bundler.require(*Rails.groups)
 
@@ -40,5 +40,13 @@ module Chown
 
     # Set Portuguese as default locale.
     config.i18n.default_locale = :'pt-BR'
+
+    # Configure devise layout
+    config.to_prepare do
+      Devise::SessionsController.layout "home"
+      Devise::ConfirmationsController.layout "home"
+      Devise::UnlocksController.layout "home"
+      Devise::PasswordsController.layout "home"
+    end
   end
 end

@@ -17,3 +17,7 @@ pt-BR:
       alert: Encontramos erros ao tentar atualizar o veículo.
     destroy:
       success: Sucesso! Veículo deletada.
+  transfers:
+    create:
+      success: Sucesso! O veículo foi transferido.
+      alert: Encontramos erros ao tentar transferir o veículo.

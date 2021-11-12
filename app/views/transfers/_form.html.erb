@@ -8,7 +8,7 @@
 <div class="field">
   <%= f.label :person, class: 'label' %>
   <div class="control">
-    <%= f.select :person_id, Person.buyer.collect { |p| [ p.name, p.id ] }, include_blank: true, class: 'input', required: true %>
+    <%= f.select :person_id, Person.all.collect { |p| [ p.name, p.id ] }, include_blank: true, class: 'input', required: true %>
   </div>
 </div>
 

@@ -19,19 +19,15 @@
         </tr>
       </thead>
       <tbody>
-        <% @transfers.each do |transfer| %>
-          <tr>
-            <td><%= image_tag(transfer.doc_image) %></td>
-            <td><%= link_to transfer.name, person_path(transfer.person) %></td>
-            <td><%= transfer.document_number %></td>
-            <td><%= transfer.license_plate %></td>
-            <td><%= transfer.email %></td>
-            <td><%= transfer.created_at %></td>
-          </tr>
-        <% end %>
+        <tr>
+          <td> <%= image_tag(@transfer.doc_image) %></td>
+          <td><%= link_to @transfer.name, person_path(@transfer.person) %></td>
+          <td><%= @transfer.document_number %></td>
+          <td><%= @transfer.license_plate %></td>
+          <td><%= @transfer.email %></td>
+          <td><%= @transfer.created_at %></td>
+        </tr>
       </tbody>
     </table>
-
-    <%== pagy_bulma_nav(@pagy) %>
   </div>
 </section>

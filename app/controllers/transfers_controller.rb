@@ -13,17 +13,25 @@ class TransfersController < ApplicationController
     @transfers = paginate Transfer.all
   end
 
+  def show
+    @transfer = Transfer.find params[:id]
+  end
+
   def new
-    @transfer = Transfer::Owner.new
+    @ownership = Transfer::Ownership.new
   end
 
   def create
-    @transfer = Transfer::Owner.new transfer_params.merge(user: current_user)
+    @ownership = Transfer::Ownership.new transfer_params
 
-    if @transfer.save
-      flash[:sucess] = t('.success', vehicle: @transfer.transfer.license_plate, name: @transfer.transfer.name)
+    if @ownership.save
+      flash[:sucess] = t(
+        '.success',
+        vehicle: @ownership.transfer.license_plate,
+        name: @ownership.transfer.name
+      )
 
-      redirect_to @transfer.transfer
+      redirect_to @ownership.transfer
     else
       flash.now[:alert] = t('.alert')
 
@@ -34,6 +42,6 @@ class TransfersController < ApplicationController
   private
 
   def transfer_params
-    safe_params[:transfer]
+    safe_params[:transfer].merge(user: current_user)
   end
 end

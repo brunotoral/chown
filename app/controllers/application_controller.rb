@@ -2,7 +2,6 @@
 
 class ApplicationController < ActionController::Base
   include Pagy::Backend
-  layout :layout_by_resource
 
   before_action :authenticate_user!
 
@@ -14,11 +13,7 @@ class ApplicationController < ActionController::Base
     paginated_collection
   end
 
-  def layout_by_resource
-    if devise_controller?
-      'devise'
-    else
-      'application'
-    end
+  def after_sign_in_path_for(resource)
+    people_path
   end
 end

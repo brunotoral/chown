@@ -2,7 +2,8 @@
 
 class Transfer < ApplicationRecord
   belongs_to :vehicle
-  belongs_to :person
+  # belongs_to :buyer, class_name: 'Person'
+  # belongs_to :seller, class_name: 'Person'
   belongs_to :user
 
   delegate :email, to: :user
@@ -11,6 +12,6 @@ class Transfer < ApplicationRecord
 
   has_one_attached :doc_image
 
-  validates :doc_image, presence: true
+  # validates :doc_image, presence: true
   validates_uniqueness_of :vehicle
 end
