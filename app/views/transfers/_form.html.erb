@@ -6,9 +6,16 @@
 </div>
 
 <div class="field">
-  <%= f.label :person, class: 'label' %>
+  <%= f.label :buyer, class: 'label' %>
   <div class="control">
-    <%= f.select :person_id, Person.all.collect { |p| [ p.name, p.id ] }, include_blank: true, class: 'input', required: true %>
+    <%= f.select :buyer_id, Person.all.collect { |p| [ p.name, p.id ] }, include_blank: true, class: 'input', required: true %>
+  </div>
+</div>
+
+<div class="field">
+  <%= f.label :seller, class: 'label' %>
+  <div class="control">
+    <%= f.select :seller_id, Person.all.collect { |p| [ p.name, p.id ] }, include_blank: true, class: 'input', required: true %>
   </div>
 </div>
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_12_113318) do
+ActiveRecord::Schema.define(version: 2021_11_12_132810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "pgcrypto"
@@ -53,11 +53,13 @@ ActiveRecord::Schema.define(version: 2021_11_12_113318) do
 
   create_table "transfers", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "vehicle_id", null: false
-    t.uuid "person_id", null: false
     t.uuid "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.index ["person_id"], name: "index_transfers_on_person_id"
+    t.uuid "buyer_id"
+    t.uuid "seller_id"
+    t.index ["buyer_id"], name: "index_transfers_on_buyer_id"
+    t.index ["seller_id"], name: "index_transfers_on_seller_id"
     t.index ["user_id"], name: "index_transfers_on_user_id"
     t.index ["vehicle_id"], name: "index_transfers_on_vehicle_id"
   end
@@ -87,7 +89,8 @@ ActiveRecord::Schema.define(version: 2021_11_12_113318) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
-  add_foreign_key "transfers", "people"
+  add_foreign_key "transfers", "people", column: "buyer_id"
+  add_foreign_key "transfers", "people", column: "seller_id"
   add_foreign_key "transfers", "users"
   add_foreign_key "transfers", "vehicles"
   add_foreign_key "vehicles", "people"

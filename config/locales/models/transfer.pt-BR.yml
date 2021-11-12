@@ -1,7 +1,8 @@
 pt-BR:
   transfer_attributes: &attributes
     doc_image: Imagem do Documento
-    person: Pessoa (Comprador)
+    buyer: Comprador
+    seller: Vendedor
     vehicle: Veículo
     created_at: Transferido em
 

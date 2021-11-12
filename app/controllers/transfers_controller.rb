@@ -5,7 +5,8 @@ class TransfersController < ApplicationController
     required(:transfer).hash do
       required(:doc_image).filled(:string)
       required(:vehicle_id).filled(:string)
-      required(:person_id).filled(:string)
+      required(:buyer_id).filled(:string)
+      required(:seller_id).filled(:string)
     end
   end
 
