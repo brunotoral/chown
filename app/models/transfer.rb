@@ -17,6 +17,6 @@ class Transfer < ApplicationRecord
   validates :doc_image, presence: true
   validates_uniqueness_of :vehicle
 
-  scope :filter_by_creation_date, -> { order(created_at: :desc) }
+  scope :filter_by_creation, -> { order(created_at: :desc) }
   scope :filter_by_user, -> { joins(:user).order(email: :asc) }
 end

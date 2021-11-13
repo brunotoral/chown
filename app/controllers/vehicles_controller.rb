@@ -14,7 +14,8 @@ class VehiclesController < ApplicationController
   end
 
   def index
-    @vehicles = paginate Vehicle.all
+    vehicle = Vehicle.filtered(filters: [filter])
+    @vehicles = paginate vehicle
   end
 
   def show; end
@@ -26,7 +27,7 @@ class VehiclesController < ApplicationController
   def create
     @vehicle = @person.vehicles.new vehicle_params
 
-    if @vehicle.save
+    if safe_params.success? && @vehicle.save
       flash[:success] = t('.success')
 
       redirect_to @person
@@ -40,7 +41,7 @@ class VehiclesController < ApplicationController
   def edit; end
 
   def update
-    if @vehicle.update vehicle_params
+    if safe_params.success? && @vehicle.update(vehicle_params)
       flash[:success] = t('.success')
 
       redirect_to @person
@@ -71,5 +72,9 @@ class VehiclesController < ApplicationController
 
   def vehicle_params
     safe_params[:vehicle]
+  end
+
+  def filter
+    params[:filter]
   end
 end

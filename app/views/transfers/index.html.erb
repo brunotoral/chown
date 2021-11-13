@@ -2,9 +2,24 @@
   <%= section_title t '.heading' %>
 
   <div class="box">
-    <div class="buttons are-small">
-      <%= link_to 'Nova Transferência', new_transfer_path, class: 'button is-success is-small' %>
-    </div>
+    <nav class="level">
+      <div class="level-left">
+        <div class="level-item">
+          <nav class="buttons are-small">
+            <%= link_to t('.actions.new'), new_transfer_path, class: 'button is-success' %>
+          </nav>
+        </div>
+      </div>
+      <div class="level-right" id="filters">
+        <div class="level-item">
+          <nav class="buttons has-addons are-small">
+            <%= link_to 'Ordenar por data', transfers_path(filter: :creation), class: 'button' %>
+            <%= link_to 'Ordenar por Nome', transfers_path(filter: :user), class: 'button' %>
+            <%= link_to 'Todos', transfers_path, class: 'button' %>
+          </nav>
+        </div>
+      </div>
+    </nav>
 
     <table id="transfers" class="table is-fullwidth is-hoverable">
       <thead>

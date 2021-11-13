@@ -23,14 +23,14 @@ RSpec.describe Transfer, type: :model do
     end
   end
 
-  describe '.filter_by_creation_date' do
+  describe '.filter_by_creation' do
     it 'returns transfer in order of create date' do
       albion = Fabricate(:user, email: 'albion@example.com')
       bastion = Fabricate(:user, email: 'bastion@example.com')
       transfer_one = Fabricate(:transfer, user: albion, created_at: Date.today - 2)
       transfer_two = Fabricate(:transfer, user: bastion)
 
-      people = described_class.filter_by_creation_date
+      people = described_class.filter_by_creation
 
       expect(people).to match_array([transfer_one, transfer_two])
     end

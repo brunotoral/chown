@@ -2,6 +2,23 @@
   <%= section_title t '.heading' %>
 
   <div class="box">
+  <nav class="level">
+      <div class="level-left">
+        <div class="level-item">
+        </div>
+      </div>
+      <div class="level-right" id="filters">
+        <div class="level-item">
+          <nav class="buttons has-addons are-small">
+            <%= link_to 'Transferiveis', vehicles_path(filter: :transferable), class: 'button' %>
+            <%= link_to 'Transferidos', vehicles_path(filter: :transfered) , class: 'button' %>
+            <%= link_to 'Por proprietário', vehicles_path(filter: :owner_name) , class: 'button' %>
+            <%= link_to 'Todos', vehicles_path, class: 'button' %>
+          </nav>
+        </div>
+      </div>
+    </nav>
+
     <table id="vehicles" class="table is-fullwidth is-hoverable">
       <thead>
         <tr>

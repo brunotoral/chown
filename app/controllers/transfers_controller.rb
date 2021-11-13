@@ -13,7 +13,8 @@ class TransfersController < ApplicationController
   end
 
   def index
-    @transfers = paginate Transfer.all
+    transfer = Transfer.filtered(filters: [filter])
+    @transfers = paginate transfer
   end
 
   def show
@@ -28,11 +29,7 @@ class TransfersController < ApplicationController
     @ownership = Transfer::Ownership.new ownership_params
 
     if safe_params.success? && @ownership.save
-      flash[:sucess] = t(
-        '.success',
-        vehicle: @ownership.transfer.license_plate,
-        name: @ownership.transfer.name
-      )
+      flash[:sucess] = t('.success', vehicle: @ownership.transfer.license_plate, name: @ownership.transfer.name)
 
       redirect_to @ownership.transfer
     else
@@ -54,5 +51,9 @@ class TransfersController < ApplicationController
 
   def buyer_params
     safe_params[:transfer][:person]
+  end
+
+  def filter
+    params[:filter]
   end
 end

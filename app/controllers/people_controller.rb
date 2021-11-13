@@ -10,7 +10,8 @@ class PeopleController < ApplicationController
   end
 
   def index
-    @people = paginate(Person.all)
+    people = Person.filtered(filters: [filter])
+    @people = paginate(people)
   end
 
   def show; end
@@ -64,5 +65,9 @@ class PeopleController < ApplicationController
 
   def person_params
     safe_params[:person]
+  end
+
+  def filter
+    params[:filter]
   end
 end

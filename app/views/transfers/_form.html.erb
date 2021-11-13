@@ -1,7 +1,7 @@
 <div class="field">
   <%= f.label :vehicle, class: 'label' %>
   <div class="control">
-    <%= f.select :vehicle_id, Vehicle.filter_by_transferable.craollect { |p| [ p.license_plate, p.id ] }, include_blank: true, class: 'input', required: true %>
+    <%= f.select :vehicle_id, Vehicle.filter_by_transferable.collect { |p| [ p.license_plate, p.id ] }, include_blank: true, class: 'input', required: true %>
   </div>
 </div>
 

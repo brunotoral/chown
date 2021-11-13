@@ -5,6 +5,7 @@ pt-BR:
       actions:
         update: Atualizar
         delete: Remover
+        new: Novo
     show:
       heading: Pessoa
       actions:
