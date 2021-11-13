@@ -148,7 +148,6 @@ GEM
       dry-equalizer (~> 0.2)
       dry-inflector (~> 0.1, >= 0.1.2)
       dry-struct (~> 1.0)
-    dry-transformer (0.1.1)
     dry-types (1.5.1)
       concurrent-ruby (~> 1.0)
       dry-container (~> 0.3)
@@ -375,7 +374,6 @@ DEPENDENCIES
   cuprite
   devise
   dry-rails (~> 0.3.0)
-  dry-transformer
   fabrication
   guard
   guard-rspec
