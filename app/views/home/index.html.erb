@@ -3,14 +3,18 @@
 <section class="section">
   <div class="columns is-centered">
     <div class="column is-4">
-      <h1 class="title is-4 has-text-centered">
-        Chown
-      </h1>
-      <!-- <figure class="image is-128x128"> -->
-      <!-- </figure> -->
-      <div class="has-text-centered">
-        <%= image_tag 'logo.png', width: 128, height: 128 %>
-        <%= link_to 'Entrar', new_user_session_path, class: 'button is-success' %>
+      <div class="box">
+        <h1 class="title is-4 has-text-centered">
+          Change Owner
+        </h1>
+        <div class="media">
+          <div class="container">
+            <%= image_tag 'logo.png', height: 128 %>
+          </div>
+        </div>
+      <div class="is-centered">
+        <%= link_to 'Entrar', new_user_session_path, class: 'button is-success is-fullwidth' %>
+      </div>
       </div>
     </div>
   </div>

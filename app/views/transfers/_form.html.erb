@@ -1,3 +1,5 @@
+<%= section_title 'comprador' %>
+
 <div class="field">
   <%= f.label :vehicle, class: 'label' %>
   <div class="control">
@@ -38,6 +40,8 @@
       <%= ff.text_field :document_number, class: 'input', required: true %>
     </div>
   </div>
+
+  <%= section_title 'endereço' %>
 
   <%= ff.fields_for :address, buyer.build_address do |fa| %>
     <div class="field">

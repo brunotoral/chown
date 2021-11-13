@@ -19,6 +19,8 @@ class PeopleController < ApplicationController
   def new
     @person = Person.new
     @address = @person.build_address
+
+    authorize @person
   end
 
   def create
@@ -61,6 +63,8 @@ class PeopleController < ApplicationController
 
   def set_person
     @person = Person.find params[:id]
+
+    authorize @person
   end
 
   def person_params

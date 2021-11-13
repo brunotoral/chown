@@ -22,10 +22,13 @@ class VehiclesController < ApplicationController
 
   def new
     @vehicle = @person.vehicles.new
+    authorize @vehicle
   end
 
   def create
     @vehicle = @person.vehicles.new vehicle_params
+
+    authorize @vehicle
 
     if safe_params.success? && @vehicle.save
       flash[:success] = t('.success')
@@ -68,6 +71,8 @@ class VehiclesController < ApplicationController
 
   def set_vehicle
     @vehicle = Vehicle.find params[:id]
+
+    authorize @vehicle
   end
 
   def vehicle_params

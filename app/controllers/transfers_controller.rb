@@ -23,10 +23,14 @@ class TransfersController < ApplicationController
 
   def new
     @ownership = Transfer::Ownership.new
+
+    authorize @ownership
   end
 
   def create
     @ownership = Transfer::Ownership.new ownership_params
+
+    authorize @ownership
 
     if safe_params.success? && @ownership.save
       flash[:sucess] = t('.success', vehicle: @ownership.transfer.license_plate, name: @ownership.transfer.name)

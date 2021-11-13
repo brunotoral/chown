@@ -6,5 +6,7 @@ class User < ApplicationRecord
   devise :database_authenticatable,
          :recoverable, :rememberable, :validatable
 
+  enum role: { moderator: 0, admin: 1 }
+
   has_many :transfers
 end
