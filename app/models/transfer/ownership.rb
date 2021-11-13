@@ -15,7 +15,7 @@ class Transfer
 
       return false if invalid?
 
-      change_ownership!
+      assign_buyer!
 
       transaction do
         transfer.save!(validate: false)
@@ -40,7 +40,7 @@ class Transfer
 
     private
 
-    def change_ownership!
+    def assign_buyer!
       vehicle.assign_attributes(person: buyer)
     end
 
