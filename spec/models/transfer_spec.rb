@@ -10,10 +10,44 @@ RSpec.describe Transfer, type: :model do
     it { is_expected.to belong_to :user }
   end
 
+  describe '.filter_by_user' do
+    it 'returns transfer in alphabeticall order of the user' do
+      albion = Fabricate(:user, email: 'albion@example.com')
+      bastion = Fabricate(:user, email: 'bastion@example.com')
+      transfer_one = Fabricate(:transfer, user: albion)
+      transfer_two = Fabricate(:transfer, user: bastion)
+
+      people = described_class.filter_by_user
+
+      expect(people).to match_array([transfer_one, transfer_two])
+    end
+  end
+
+  describe '.filter_by_creation_date' do
+    it 'returns transfer in order of create date' do
+      albion = Fabricate(:user, email: 'albion@example.com')
+      bastion = Fabricate(:user, email: 'bastion@example.com')
+      transfer_one = Fabricate(:transfer, user: albion, created_at: Date.today - 2)
+      transfer_two = Fabricate(:transfer, user: bastion)
+
+      people = described_class.filter_by_creation_date
+
+      expect(people).to match_array([transfer_one, transfer_two])
+    end
+  end
+
   describe 'validations' do
     subject(:transfer) { Fabricate.build(:transfer) }
 
     it { is_expected.to validate_uniqueness_of(:vehicle) }
     it { is_expected.to validate_presence_of :doc_image }
+  end
+
+  it 'does not allows to transfer the same vehicle twice' do
+    vehicle = Fabricate(:vehicle)
+    user = Fabricate(:user)
+    transfer = Fabricate(:transfer, user: user, vehicle: vehicle)
+
+    expect { Fabricate(:transfer, user: user, vehicle: vehicle) }.to raise_error ActiveRecord::RecordInvalid
   end
 end
