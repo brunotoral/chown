@@ -37,6 +37,17 @@
   </div>
 
   <div class="field">
+    <div class="control">
+      <% Person.document_kinds.keys.each do |kind| %>
+        <label class="radio">
+          <%= ff.radio_button :document_kind, kind %>
+          <%= t(kind, scope: 'person_document_kinds') %>
+        </label>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
     <%= ff.label :document_number, class: 'label' %>
     <div class="control">
       <%= ff.text_field :document_number, class: 'input', required: true %>

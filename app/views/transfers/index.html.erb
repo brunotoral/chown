@@ -15,6 +15,8 @@
           <nav class="buttons has-addons are-small">
             <%= link_to 'Ordenar por data', transfers_path(filter: :creation), class: 'button' %>
             <%= link_to 'Ordenar por usuário', transfers_path(filter: :user), class: 'button' %>
+            <%= link_to 'CNPJ', transfers_path(filter: :cnpj), class: 'button' %>
+            <%= link_to 'CPF', transfers_path(filter: :cpf), class: 'button' %>
             <%= link_to 'Todos', transfers_path, class: 'button' %>
           </nav>
         </div>
@@ -27,6 +29,7 @@
           <th>Imagem do Documento</th>
           <th>Vendedor</th>
           <th>Comprador</th>
+          <th>Tipo de Documento</th>
           <th>Documento do Proprietário</th>
           <th>Placa do Veículo</th>
           <th>Usuário</th>
@@ -40,6 +43,7 @@
             <td><%= image_tag transfer.doc_image, width: 128, height: 128 %></td>
             <td><%= link_to transfer.seller.name, person_path(transfer.seller) %></td>
             <td><%= link_to transfer.name, person_path(transfer.buyer) %></td>
+            <td><%= transfer.buyer.document_kind.upcase %></td>
             <td><%= transfer.document_number %></td>
             <td><%= transfer.license_plate %></td>
             <td><%= transfer.email %></td>

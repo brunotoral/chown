@@ -15,6 +15,8 @@
           <nav class="buttons has-addons are-small">
             <%= link_to "Com veículos transferiveis", people_path(filter: :transferable), class: 'button' %>
             <%= link_to 'Ordenar por Nome', people_path(filter: :name), class: 'button' %>
+            <%= link_to 'CNPJ', people_path(filter: :cnpj), class: 'button' %>
+            <%= link_to 'CPF', people_path(filter: :cpf), class: 'button' %>
             <%= link_to 'Todos', people_path, class: 'button' %>
           </nav>
         </div>
@@ -25,6 +27,7 @@
       <thead>
         <tr>
           <th>Nome</th>
+          <th>Tipo de Documento</th>
           <th>Documento</th>
           <th></th>
           <th></th>
@@ -34,6 +37,7 @@
         <% @people.each do |person| %>
           <tr>
             <td><%= link_to person.name, person_path(person) %></td>
+            <td><%= person.document_kind.upcase %></td>
             <td><%= person.document_number %></td>
             <td><%= link_to t('.actions.update'), edit_person_path(person) %></td>
             <td><%= link_to t('.actions.delete'), person_path(person), method: :delete %></td>

@@ -19,4 +19,6 @@ class Transfer < ApplicationRecord
 
   scope :filter_by_creation, -> { order(created_at: :desc) }
   scope :filter_by_user, -> { joins(:user).order(email: :asc) }
+  scope :filter_by_cpf, -> { joins(:buyer).where(buyer: { document_kind: :cpf }) }
+  scope :filter_by_cnpj, -> { joins(:buyer).where(buyer: { document_kind: :cnpj }) }
 end

@@ -1,7 +1,7 @@
 pt-BR:
-  person_kinds:
-    buyer: Comprador
-    seller: Vendedor
+  person_document_kinds:
+    cpf: CPF
+    cnpj: CNPJ
 
   person_attributes: &attributes
     name: Nome

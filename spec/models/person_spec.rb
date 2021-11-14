@@ -21,6 +21,30 @@ RSpec.describe Person, type: :model do
     end
   end
 
+  describe '.filter_by_cpf' do
+    it 'returns only person with cpf document kind' do
+      albion = Fabricate(:person, name: 'Albion', document_kind: :cnpj)
+      bastion = Fabricate(:person, name: 'Bastion')
+      zeta = Fabricate(:person, name: 'Zeta')
+
+      people = described_class.filter_by_cpf
+
+      expect(people).to match_array([bastion, zeta])
+    end
+  end
+
+  describe '.filter_by_cnpj' do
+    it 'returns only person with cnpj document kind' do
+      albion = Fabricate(:person, name: 'Albion', document_kind: :cnpj)
+      bastion = Fabricate(:person, name: 'Bastion')
+      zeta = Fabricate(:person, name: 'Zeta')
+
+      people = described_class.filter_by_cnpj
+
+      expect(people).to match_array([albion])
+    end
+  end
+
   describe '.filter_by_transferable' do
     it 'returns only person with transferable vehicles' do
       albion = Fabricate(:person, name: 'Albion')

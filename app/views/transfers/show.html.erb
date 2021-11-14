@@ -11,6 +11,7 @@
         <tr>
           <th>Imagem do Documento</th>
           <th>Comprador</th>
+          <th>Tipo de Documento</th>
           <th>Documento do Proprietário</th>
           <th>Placa do Veículo</th>
           <th>Usuário</th>
@@ -22,6 +23,7 @@
         <tr>
           <td><%= image_tag @transfer.doc_image, width: 128, height: 128 %></td>
           <td><%= link_to @transfer.name, person_path(@transfer.buyer) %></td>
+          <td><%= @transfer.buyer.document_kind.upcase %></td>
           <td><%= @transfer.document_number %></td>
           <td><%= @transfer.license_plate %></td>
           <td><%= @transfer.email %></td>

@@ -23,6 +23,36 @@ RSpec.describe Transfer, type: :model do
     end
   end
 
+  describe '.filter_by_cpf' do
+    it 'returns only transfers with buyers with cpf' do
+      frodo = Fabricate(:person)
+      sam = Fabricate(:person, document_kind: :cnpj)
+      albion = Fabricate(:user, email: 'albion@example.com')
+      bastion = Fabricate(:user, email: 'bastion@example.com')
+      transfer_one = Fabricate(:transfer, user: albion, buyer: sam)
+      transfer_two = Fabricate(:transfer, user: bastion, buyer: frodo)
+
+      people = described_class.filter_by_cpf
+
+      expect(people).to match_array([transfer_two])
+    end
+  end
+
+  describe '.filter_by_cnpj' do
+    it 'returns only transfers with buyers with cnpj' do
+      frodo = Fabricate(:person)
+      sam = Fabricate(:person, document_kind: :cnpj)
+      albion = Fabricate(:user, email: 'albion@example.com')
+      bastion = Fabricate(:user, email: 'bastion@example.com')
+      transfer_one = Fabricate(:transfer, user: albion, buyer: sam)
+      transfer_two = Fabricate(:transfer, user: bastion, buyer: frodo)
+
+      people = described_class.filter_by_cnpj
+
+      expect(people).to match_array([transfer_one])
+    end
+  end
+
   describe '.filter_by_creation' do
     it 'returns transfer in order of create date' do
       albion = Fabricate(:user, email: 'albion@example.com')

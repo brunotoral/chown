@@ -5,7 +5,7 @@ class Vehicle < ApplicationRecord
 
   belongs_to :person
 
-  delegate :document_number, to: :person
+  delegate :document_number, :document_kind, to: :person
 
   has_one :transfer
 
