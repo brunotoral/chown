@@ -3,11 +3,16 @@
 <div class="field">
   <%= f.label :vehicle, class: 'label' %>
   <div class="control">
-    <%= f.select :vehicle_id, Vehicle.filter_by_transferable.collect { |p| [ p.license_plate, p.id ] }, include_blank: true, class: 'input', required: true %>
+    <div class="select">
+      <%= f.select :vehicle_id, Vehicle.filter_by_transferable.collect { |p| [ p.license_plate, p.id ] }, include_blank: true, required: true %>
+    </div>
   </div>
 </div>
 
 <div class="field">
+  <dev class="label">
+    Documento
+  </dev>
   <div class="file has-name" data-controller="files">
     <%= f.label :doc_image, class: 'file-label' do %>
       <%= f.file_field :doc_image, accept: 'image/png,image/gif,image/jpeg', class: 'file-input', 'data-action' => "change->files#display" %>
@@ -16,7 +21,7 @@
           <ion-icon name="cloud-upload-outline"></ion-icon>
         </span>
         <span class="file-label">
-         Escolha um arquivo...
+         Escolha um arquivo
         </span>
       </span>
       <span class="file-name" data-files-target="fileItem">
