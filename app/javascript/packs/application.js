@@ -10,11 +10,12 @@ import "channels"
 import 'stylesheets/application'
 import { Application } from "@hotwired/stimulus"
 import { definitionsFromContext } from "@hotwired/stimulus-webpack-helpers"
+
 window.Stimulus = Application.start()
 const context = require.context("controllers", true, /_controller\.(js|ts)$/)
+
 Stimulus.load(definitionsFromContext(context))
 
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
-const application = Application.start()

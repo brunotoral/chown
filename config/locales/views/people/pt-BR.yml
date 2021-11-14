@@ -1,13 +1,13 @@
 pt-BR:
   people:
     index:
-      heading: Pessoas Registradas
+      heading: Proprietários Registradas
       actions:
         update: Atualizar
         delete: Remover
         new: Novo
     show:
-      heading: Pessoa
+      heading: Proprietário
       actions:
         update: Atualizar
         delete: Remover
