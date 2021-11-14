@@ -15,7 +15,7 @@
 ## Experimente a aplicação
 
 #### Fluxo da aplicação
- Acesse o [Chown](https://)
+ Acesse o [Chown](https://chown.herokuapp.com/)
 
 1. Faça o login com uma das seguintes contas:
   1. email: user@example.com password: 1q2w3e4r 
@@ -43,7 +43,7 @@
 ### Instalação
 
 1. Tenha certeza de ter todos os pré-requisitos instalados.
-1. Clone o repositório `git clone git@github.com:brunotoral/chwon.git`
+1. Clone o repositório `git clone git@github.com:brunotoral/chown.git`
 1. Construa o container de desenvolvimento `docker-compose build`. isso irá criar uma imagem
 docker nomeada de `chown-dev`com todas as ferramentas requeridas.
 1. Instale as dependência node com `docker-compose run runner yarn install`
